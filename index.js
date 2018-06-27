@@ -10,9 +10,9 @@ function setCart(c) {
 }
 
 function addToCart(item) {
-  var item = generateCartItem(item);
+  var item = generateCartItem(item)
   getCart().push(item)
-  return `${item.itemName} has been added to your cart.`;
+  return `${item.itemName} has been added to your cart.`
 }
 
 function viewCart() {
@@ -24,13 +24,13 @@ function total() {
   return sum
 }
 
-function removeFromCart(item) {
+function removeFromCart(itemName) {
   var itemToRemove = searchCartForItemToRemove(itemName)
   return itemToRemove ? removeItemFromCart(itemToRemove) : notifyUserThereIsNoItemToRemove()
 }
 
 function placeOrder(cardNumber) {
-  if (arguments[0] === undefined) {
+  if (arguments[0] == undefined) {
     return "Sorry, we don't have a credit card on file for you."
   } else {
     var sumToCharge = total()
@@ -39,6 +39,7 @@ function placeOrder(cardNumber) {
   }
 }
 
+// helper functions
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -87,6 +88,8 @@ function notifyUserThereIsNoItemToRemove() {
 }
 
 function removeItemFromCart(itemToRemove) {
-  var indexOfItemToRemove
+  var indexOfItemToRemove = cart.indexOf(itemToRemove)
+  //Array.prototype.splice()
+  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
   getCart().splice(indexOfItemToRemove,1)
 }
